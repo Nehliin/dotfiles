@@ -1,0 +1,52 @@
+{
+    "window.zoomLevel": -1,
+    "editor.formatOnSave": true,
+    "git.autofetch": true,
+    "editor.minimap.enabled": false,
+    "files.associations": {
+        "*.shader": "glsl"
+    },
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "JetBrains Mono",
+    "files.autoSave": "afterDelay",
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<Ctrl>"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "p",
+            ],
+            "after": [
+                "p",
+                "g",
+                "v",
+                "y"
+            ]
+        }
+    ],
+    "keyboard.dispatch": "keyCode",
+    "vim.easymotion": true,
+    "vim.handleKeys": {
+        "<C-t>": false,
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "rust-analyzer.checkOnSave.command": "clippy",
+    "rust-analyzer.debug.openDebugPane": true,
+    "workbench.editor.closeOnFileDelete": true,
+    "workbench.colorTheme": "Default Dark+",
+    "rust-analyzer.inlayHints.maxLength": 25,
+    "workbench.editor.wrapTabs": true,
+    "extensions.ignoreRecommendations": true,
+}
