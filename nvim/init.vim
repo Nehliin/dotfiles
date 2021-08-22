@@ -3,10 +3,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'jiangmiao/auto-pairs'
 " Airline
 Plug 'vim-airline/vim-airline'
-Plug 'kyazdani42/nvim-web-devicons' 
-" Recommended (for coloured icons)
-Plug 'ryanoasis/vim-devicons'
-" for file icons
+" Recommended (for coloured icons for files)
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/nvim-bufferline.lua'
@@ -18,7 +15,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Dracula
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'neovim/nvim-lspconfig'
+Plug 'kabouzeid/nvim-lspinstall'
 Plug 'simrat39/rust-tools.nvim'
+" Debugging rust
+Plug 'mfussenegger/nvim-dap'
+"
 Plug 'hrsh7th/nvim-compe'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -26,6 +27,7 @@ Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'    
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/playground'
+Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-startify'
 Plug '907th/vim-auto-save'
 call plug#end()
@@ -108,7 +110,9 @@ nnoremap <Leader>sc :split<CR>
 "Autosave
 let g:auto_save = 1
 
-" file tree settings 
+" File tree
+nnoremap <Leader>o :NvimTreeToggle<CR>
+
 " this variable must be enabled for colors to be applied properly
 set termguicolors
 " a list of groups can be found at `:help nvim_tree_highlight`

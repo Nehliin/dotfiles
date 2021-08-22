@@ -10,9 +10,6 @@ nnoremap <silent> ge <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent> <Leader>a <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <Leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
-" auto-format
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting()
-
 inoremap <silent><expr> <C-Space> compe#complete()
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 inoremap <silent><expr> <C-e>     compe#close('<C-e>')

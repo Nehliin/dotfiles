@@ -21,6 +21,13 @@ nvim_lsp.rust_analyzer.setup({
     capabilities = capabilities,
 })
 
+require'lspinstall'.setup() -- important
+
+local servers = require'lspinstall'.installed_servers()
+for _, server in pairs(servers) do
+  require'lspconfig'[server].setup{}
+end
+
 local opts = {
     tools = { -- rust-tools options
         -- automatically set inlay hints (type hints)
@@ -88,13 +95,29 @@ local opts = {
     -- all the opts to send to nvim-lspconfig
     -- these override the defaults set by rust-tools.nvim
     -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {}, -- rust-analyer options
+    server = {
+      settings = {
+        ["rust-analyzer"] = {
+           procMacro = {
+            enable = true,
+          },
+          flags = {
+            allow_incremental_sync = true,
+            debounce_text_changes = 500,
+          },
+          checkOnSave = {
+            command = "clippy",
+          },
+        },
+      },
+    }, -- rust-analyer options
 }
 require('rust-tools').setup(opts)
 
 
 vim.api.nvim_set_keymap("n", "<leader>.", [[<cmd>lua require('rust-tools.hover_actions').hover_actions()<cr>]], {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>rr", [[<cmd>lua require('rust-tools.runnables').runnables()<cr>]], {noremap = true})
+vim.api.nvim_set_keymap("n", "<leader>fc", [[<cmd>lua vim.lsp.buf.formatting()<cr>]], {noremap = true})
 
 vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
 
@@ -202,7 +225,7 @@ function set_binding(mode, key, command)
 end
 
 set_binding('n', '<leader>ff', ':lua search_files()<cr>')
-set_binding('n', '<leader>fg', ':lua require("telescope-builtin").live_grep()<cr>')
+set_binding('n', '<leader>fg', ':lua require("telescope.builtin").live_grep()<cr>')
 set_binding('n', '<leader>fb', ':lua search_in_buffer()<cr>')
 set_binding('i', '<C-f>', '<Esc> :lua search_in_buffer()<cr>')
 set_binding('n', '<leader>fs', ':lua search_symbols_workspace()<cr>')
