@@ -1,4 +1,10 @@
-call plug#begin(stdpath('data') . '/plugged')
+" auto-install vim-plug
+if empty(glob(stdpath('data') . '/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+call plug#begin(stdpath('data') . '/autoload/plugged')
 " Auto pairs for '(' '[' '{'
 Plug 'jiangmiao/auto-pairs'
 " Airline
@@ -32,13 +38,14 @@ Plug 'mhinz/vim-startify'
 Plug '907th/vim-auto-save'
 call plug#end()
 
-source  $HOME/AppData/Local/nvim/general.vim
-source  $HOME/AppData/Local/nvim/lsp-config.vim
+let g:config_root = stdpath('config')
 
-luafile $HOME/AppData/Local/nvim/tree-sitter-config.lua
-luafile $HOME/AppData/Local/nvim/config.lua
+execute 'source ' . g:config_root . '/general.vim'
+execute 'source ' . g:config_root . '/lsp-config.vim'
+execute 'source ' . g:config_root . '/tree-sitter-config.lua'
+execute 'source ' . g:config_root . '/config.lua'
 
-nnoremap <leader>rl :source $HOME/AppData/Local/nvim/init.vim<CR>
+nnoremap <leader>rl :execute 'source ' . g:config_root . '/init.vim'<CR>
 
 function! SmartQuit()
     let num_buffers = len(getbufinfo({'buflisted':1}))
