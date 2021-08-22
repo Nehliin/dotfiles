@@ -42,8 +42,8 @@ let g:config_root = stdpath('config')
 
 execute 'source ' . g:config_root . '/general.vim'
 execute 'source ' . g:config_root . '/lsp-config.vim'
-execute 'source ' . g:config_root . '/tree-sitter-config.lua'
-execute 'source ' . g:config_root . '/config.lua'
+execute 'luafile ' . g:config_root . '/config.lua'
+execute 'luafile ' . g:config_root . '/tree-sitter-config.lua'
 
 nnoremap <leader>rl :execute 'source ' . g:config_root . '/init.vim'<CR>
 
