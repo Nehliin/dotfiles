@@ -110,6 +110,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Move visual selection up and down a line
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Quickly re-select either the last pasted or changed text
+noremap gV `[v`]
+
 "Window splitting
 nnoremap <Leader>sv :vsplit<CR>
 nnoremap <Leader>sc :split<CR>
