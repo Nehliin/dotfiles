@@ -34,3 +34,5 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 set autochdir                           " Your working directory will always be the same as your working directory
 set termguicolors
 set textwidth=80
+set scrolloff=10                        " Show 10 lines above and below selected
+set backspace=indent,eol,start          " Backspace behavior
