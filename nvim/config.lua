@@ -98,15 +98,10 @@ local opts = {
     server = {
       settings = {
         ["rust-analyzer"] = {
-           procMacro = {
-            enable = true,
-          },
-          flags = {
-            allow_incremental_sync = true,
-            debounce_text_changes = 500,
-          },
           checkOnSave = {
             command = "clippy",
+            allFeatures = true,
+            checkOnSave = true,
           },
         },
       },
@@ -119,7 +114,7 @@ vim.api.nvim_set_keymap("n", "<leader>.", [[<cmd>lua require('rust-tools.hover_a
 vim.api.nvim_set_keymap("n", "<leader>rr", [[<cmd>lua require('rust-tools.runnables').runnables()<cr>]], {noremap = true})
 vim.api.nvim_set_keymap("n", "<leader>fc", [[<cmd>lua vim.lsp.buf.formatting()<cr>]], {noremap = true})
 
-vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+--vim.lsp.handlers['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -155,6 +150,7 @@ source = {
     tags = true;
     snippets_nvim = true;
     treesitter = true;
+    crates = true;
   };
 }
 
@@ -171,6 +167,7 @@ require('telescope').setup{
       '--column',
       '--smart-case'
     },
+    -- USE BAT INSTEAD OF CAT
     mappings = {
       i = {
         ["<C-j>"] = actions.move_selection_better,
@@ -231,14 +228,3 @@ set_binding('i', '<C-f>', '<Esc> :lua search_in_buffer()<cr>')
 set_binding('n', '<leader>fs', ':lua search_symbols_workspace()<cr>')
 
 vim.o.termguicolors = true
-
--- colors for active , inactive buffer tabs
-require "bufferline".setup {
-    options = {
-        separator_style = {'', ''},
-        tab_size = 22,
-        enforce_regular_tabs = true,
-        view = "multiwindow",
-        show_buffer_close_icons = true,
-    },
-}

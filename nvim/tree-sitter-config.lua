@@ -4,12 +4,14 @@ local read_query = function(filename)
   return table.concat(vim.fn.readfile(vim.fn.expand(filename)), "\n")
 end
 
+require 'nvim-treesitter.install'.compilers = { "clang" }
+
 require 'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
         custom_captures = {
             -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-            ["property"] = "TSFunction",
+            --["property"] = "TSFunction",
         },
     },
     playground = {
@@ -22,4 +24,5 @@ require 'nvim-treesitter.configs'.setup {
         use_virtual_text = true,
         lint_events = {"BufWrite", "CursorHold"},
     },
+    context_commentstring = {enable = true}
 }

@@ -12,7 +12,6 @@ Plug 'vim-airline/vim-airline'
 " Recommended (for coloured icons for files)
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'akinsho/nvim-bufferline.lua'
 " Set root directory properly
 Plug 'airblade/vim-rooter'
 "Git in the gutter
@@ -36,6 +35,8 @@ Plug 'nvim-treesitter/playground'
 Plug 'tpope/vim-surround'
 Plug 'mhinz/vim-startify'
 Plug '907th/vim-auto-save'
+Plug 'saecki/crates.nvim'
+Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 let g:config_root = stdpath('config')
@@ -96,9 +97,10 @@ nnoremap <M-l>    :vertical resize +2<CR>
 nnoremap <esc> :noh<return><esc>
 
 " TAB in general mode will move to text buffer
-nnoremap <TAB> :bnext<CR>
+nnoremap <TAB> :BufferNext<CR>
 " SHIFT-TAB will go back
-nnoremap <S-TAB> :bprevious<CR>
+nnoremap <S-TAB> :BufferPrevious<CR>
+nnoremap <leader>q :BufferClose<CR>
 
 " Better tabbing
 vnoremap < <gv
@@ -112,7 +114,7 @@ nnoremap <C-l> <C-w>l
 
 " Move visual selection up and down a line
 vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv 
 
 " Quickly re-select either the last pasted or changed text
 noremap gV `[v`]
@@ -129,10 +131,11 @@ nnoremap <Leader>o :NvimTreeToggle<CR>
 
 " this variable must be enabled for colors to be applied properly
 set termguicolors
+
 " a list of groups can be found at `:help nvim_tree_highlight`
 highlight NvimTreeFolderIcon guibg=blue
-
+let g:nvim_tree_auto_open = 1
 
 colorscheme dracula
-set guifont="Jetbrains Mono"
+set guifont="JetBrainsMono NF"
 let g:neovide_transparency=1
