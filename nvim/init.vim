@@ -5,38 +5,44 @@ if empty(glob(stdpath('data') . '/autoload/plug.vim'))
 endif
 
 call plug#begin(stdpath('data') . '/autoload/plugged')
-" Auto pairs for '(' '[' '{'
+" Auto pairs for '(' '[' '{' and surround
 Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 " Airline
 Plug 'vim-airline/vim-airline'
+" Buffer bar
+Plug 'romgrk/barbar.nvim'
 " Recommended (for coloured icons for files)
 Plug 'kyazdani42/nvim-web-devicons' 
 Plug 'kyazdani42/nvim-tree.lua'
 " Set root directory properly
 Plug 'airblade/vim-rooter'
-"Git in the gutter
-Plug 'mhinz/vim-signify'
+" Git in the gutter
+Plug 'lewis6991/gitsigns.nvim'
+" Tree sitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+Plug 'nvim-treesitter/playground'
 " Dracula
 Plug 'dracula/vim', { 'as': 'dracula' }
+" Lsp stuff
 Plug 'neovim/nvim-lspconfig'
 Plug 'kabouzeid/nvim-lspinstall'
+Plug 'RishabhRD/nvim-lsputils'    
+" Foundational
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+" Rust
 Plug 'simrat39/rust-tools.nvim'
+Plug 'saecki/crates.nvim'
 " Debugging rust
 Plug 'mfussenegger/nvim-dap'
-"
-Plug 'hrsh7th/nvim-compe'
+" Unknown
 Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-lsputils'    
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-treesitter/playground'
-Plug 'tpope/vim-surround'
-Plug 'mhinz/vim-startify'
+"Completion support
+Plug 'hrsh7th/nvim-compe'
+"auto save
 Plug '907th/vim-auto-save'
-Plug 'saecki/crates.nvim'
-Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 let g:config_root = stdpath('config')
@@ -128,13 +134,12 @@ let g:auto_save = 1
 
 " File tree
 nnoremap <Leader>o :NvimTreeToggle<CR>
+let g:nvim_tree_gitignore = 1 "0 by default
+let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '.target'] "empty by default
+highlight NvimTreeFolderIcon guibg=blue
 
 " this variable must be enabled for colors to be applied properly
 set termguicolors
-
-" a list of groups can be found at `:help nvim_tree_highlight`
-highlight NvimTreeFolderIcon guibg=blue
-let g:nvim_tree_auto_open = 1
 
 colorscheme dracula
 set guifont="JetBrainsMono NF"
