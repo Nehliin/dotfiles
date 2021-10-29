@@ -135,8 +135,7 @@ nnoremap("K", "<cmd>lua require('rust-tools.move_item').move_item(true)<CR>", tr
 -- LSP
 nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", true)
 nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", true)
-nnoremap("gr", "<cmd>lua vim.lsp.buf.references()<CR>", true)
---nnoremap("gr", "<cmd>LspTrouble lsp_references<CR>", true)
+nnoremap("gr", "<cmd>LspTrouble lsp_references<CR>", true)
 nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", true)
 nnoremap("<Leader>.", "<cmd>lua require('rust-tools.hover_actions').hover_actions()<CR>", true)
 nnoremap("<Leader>rr", "<cmd>lua require('rust-tools.runnables').runnables()<CR>", true)
@@ -150,7 +149,7 @@ nnoremap("<Leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", true)
 nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
 
---nnoremap("<Leader>ld", "<cmd>LspTrouble lsp_definitions<CR>", true)
+nnoremap("<Leader>ld", "<cmd>LspTrouble lsp_definitions<CR>", true)
 nnoremap("<Leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", true)
 nnoremap("<Leader>ae", "<cmd>LspTroubleWorkspaceToggle<CR>", true)
 

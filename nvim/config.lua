@@ -27,6 +27,8 @@ require('gitsigns').setup {
   },
 }
 
+require'crates'.setup({})
+
 -- Set up nvim tree 
 require'nvim-tree'.setup {
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
