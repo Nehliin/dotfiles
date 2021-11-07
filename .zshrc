@@ -123,5 +123,10 @@ alias h='history'
 alias hs='history | rg'
 alias hsi='history | rg -i'
 
+#if type setxkbmap >/dev/null 2>&1; then
+    setxkbmap -option caps:swapescape
+#fi
+
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
