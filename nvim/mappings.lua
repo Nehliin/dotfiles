@@ -96,7 +96,7 @@ local vnoremap = function(lhs, rhs)
 end
 
 -- smartquit
-nnoremap("qq", "<cmd>lua smartquit()<CR>", true)
+nnoremap("<Leader>qq", "<cmd>lua smartquit()<CR>", true)
 -- Use alt + hjkl to resize windows
 nnoremap("<M-j>", ":resize -2<CR>")
 nnoremap("<M-k>", ":resize +2<CR>")
@@ -121,9 +121,10 @@ vnoremap("<", "<gv")
 vnoremap(">", ">gv")
 
 -- TAB in normal mode will move to text buffer
-nnoremap("<TAB>", ":bnext<CR>")
+nnoremap("<TAB>", ":BufferNext<CR>")
 -- SHIFT-TAB will go back
-nnoremap("<S-TAB>", ":bprevious<CR>")
+nnoremap("<S-TAB>", ":BufferPrevious<CR>")
+nnoremap("<Leader>q", ":BufferClose<CR>")
 
 -- NvimTree
 nnoremap("<Leader>o", ":NvimTreeToggle<CR>")
