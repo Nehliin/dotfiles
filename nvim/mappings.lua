@@ -39,10 +39,18 @@ function smartquit()
     end
 end
 
+local actions = require('telescope.actions')
 -- Open git files if possible, if it errors out open normal find files
 -- find files gives a preview and already ignores .gitingore files thanks to ripgrep
 function search_files()
-    local opts = {}
+    local opts = {
+      attach_mappings = function(_, map)
+        map('i', '<C-j>', actions.move_selection_next)
+        map('i', '<C-k>', actions.move_selection_previous)
+        -- Continue with the other mappings
+        return true
+        end,
+    }
   --  local ok = pcall(require'telescope.builtin'.git_files, opts)
 
    -- if not ok then
@@ -50,7 +58,6 @@ function search_files()
    -- end
 end
 
-local actions = require('telescope.actions')
 function search_in_buffer()
     local opts = {
       attach_mappings = function(_, map)
@@ -69,7 +76,6 @@ function search_symbols_workspace()
       attach_mappings = function(_, map)
         map('i', '<C-j>', actions.move_selection_next)
         map('i', '<C-k>', actions.move_selection_previous)
-
         -- Continue with the other mappings
         return true
         end,

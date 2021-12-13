@@ -26,7 +26,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Lsp stuff
 Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
+"Plug 'kabouzeid/nvim-lspinstall'
 Plug 'RishabhRD/nvim-lsputils'    
 " Foundational
 Plug 'nvim-telescope/telescope.nvim'
@@ -63,8 +63,6 @@ nnoremap <leader>rl :execute 'source ' . g:config_root . '/init.vim'<CR>
 let g:auto_save = 1
 
 " File tree
-let g:nvim_tree_gitignore = 1 "0 by default
-let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache', '.target'] "empty by default
 highlight NvimTreeFolderIcon guibg=blue
 
 " this variable must be enabled for colors to be applied properly

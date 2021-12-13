@@ -33,6 +33,12 @@ require'crates'.setup({})
 require'nvim-tree'.setup {
   -- closes neovim automatically when the tree is the last **WINDOW** in the view
   auto_close = true,
+  git = {
+      ignore = true,
+  },
+  filter = {
+      custom = {'.git', 'node_modules', '.cache', '.target'},
+  },
 }
 
 require'trouble'.setup{}
@@ -42,12 +48,12 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
 
-require'lspinstall'.setup() -- important
+--require'lspinstall'.setup() -- important
 
-local servers = require'lspinstall'.installed_servers()
-for _, server in pairs(servers) do
-  require'lspconfig'[server].setup{}
-end
+--local servers = require'lspinstall'.installed_servers()
+--for _, server in pairs(servers) do
+--  require'lspconfig'[server].setup{}
+--end
 
 local opts = {
     tools = { -- rust-tools options
@@ -70,10 +76,15 @@ local opts = {
       end,
       settings = {
         ["rust-analyzer"] = {
+          cargo = {
+              allFeatures = true,
+              autoreload = true,
+              runBuildScripts = true,
+          },
           checkOnSave = {
             command = "clippy",
-            allFeatures = true,
             checkOnSave = true,
+            extraArgs = {"--target-dir", "/home/oskar/Desktop/rust-analyzer/rust-analyzer-check"},
           },
         },
       },

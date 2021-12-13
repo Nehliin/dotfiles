@@ -102,11 +102,12 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='nvim'
+ fi
+export K9S_EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -117,15 +118,14 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias h='history'
 alias hs='history | rg'
 alias hsi='history | rg -i'
-
-#if type setxkbmap >/dev/null 2>&1; then
-    setxkbmap -option caps:swapescape
-#fi
+alias cb='mold -run cargo build'
+alias cr='mold -run cargo run'
+alias lg='lazygit'
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
