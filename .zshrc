@@ -130,3 +130,13 @@ alias lg='lazygit'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# FZF configurations
+#export FZF_DEFAULT_OPTS='--layout=reverse --height 40%'
+#export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#export FZF_COMPLETION_TRIGGER='*'
+
