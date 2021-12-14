@@ -26,10 +26,11 @@ Plug 'nvim-treesitter/playground'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Lsp stuff
 Plug 'neovim/nvim-lspconfig'
-"Plug 'kabouzeid/nvim-lspinstall'
 Plug 'RishabhRD/nvim-lsputils'    
 " Foundational
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'romgrk/fzy-lua-native'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'nvim-lua/plenary.nvim'
 " Rust
 Plug 'simrat39/rust-tools.nvim'

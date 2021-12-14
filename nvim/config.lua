@@ -125,15 +125,6 @@ local actions = require('telescope.actions')
 
 require('telescope').setup{
   defaults = {
-    vimgrep_arguments = {
-      'rg',
-      '--color=never',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case'
-    },
     -- USE BAT INSTEAD OF CAT
     mappings = {
       i = {
@@ -145,4 +136,5 @@ require('telescope').setup{
     },
   }
 }
+require('telescope').load_extension("fzy_native")
 

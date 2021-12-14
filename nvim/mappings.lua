@@ -43,14 +43,7 @@ local actions = require('telescope.actions')
 -- Open git files if possible, if it errors out open normal find files
 -- find files gives a preview and already ignores .gitingore files thanks to ripgrep
 function search_files()
-    local opts = {
-      attach_mappings = function(_, map)
-        map('i', '<C-j>', actions.move_selection_next)
-        map('i', '<C-k>', actions.move_selection_previous)
-        -- Continue with the other mappings
-        return true
-        end,
-    }
+    local opts = {}
   --  local ok = pcall(require'telescope.builtin'.git_files, opts)
 
    -- if not ok then
@@ -142,7 +135,7 @@ nnoremap("K", "<cmd>lua require('rust-tools.move_item').move_item(true)<CR>", tr
 -- LSP
 nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", true)
 nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", true)
-nnoremap("gr", "<cmd>LspTrouble lsp_references<CR>", true)
+nnoremap("gr", "<cmd>TroubleToggle lsp_references<CR>", true)
 nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", true)
 nnoremap("<Leader>.", "<cmd>lua require('rust-tools.hover_actions').hover_actions()<CR>", true)
 nnoremap("<Leader>rr", "<cmd>lua require('rust-tools.runnables').runnables()<CR>", true)
@@ -156,13 +149,14 @@ nnoremap("<Leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", true)
 nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
 
-nnoremap("<Leader>ld", "<cmd>LspTrouble lsp_definitions<CR>", true)
+nnoremap("<Leader>ld", "<cmd>TroubleToggle lsp_definitions<CR>", true)
+nnoremap("<Leader>xx", "<cmd>TroubleToggle<CR>", true)
 nnoremap("<Leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", true)
-nnoremap("<Leader>ae", "<cmd>LspTroubleWorkspaceToggle<CR>", true)
+nnoremap("<Leader>ae", "<cmd>TroubleToggle workspace_diagnostics<CR>", true)
 
 -- Telescope
 nnoremap("<Leader>ff", '<Esc> :lua search_files()<CR>')
 nnoremap("<Leader>fg", '<Esc> :lua require("telescope.builtin").live_grep()<CR>')
-nnoremap("<Leader>fb", '<Esc> :lua search_in_buffer()<CR>')
+nnoremap("/", '<Esc> :lua search_in_buffer()<CR>')
 nnoremap("<Leader>fs", '<Esc> :lua search_symbols_workspace()<CR>')
 
