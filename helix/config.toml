@@ -1,0 +1,17 @@
+theme = "everforest_dark"
+
+[editor]
+idle-timeout = 250
+scrolloff = 10
+
+[keys.normal]
+"g" = { "e" = "goto_next_diag", "E"= "goto_prev_diag", "G" = "goto_file_end" }
+"C-s" = ":w"
+"space" = {"v" = "vsplit", "c" = "hsplit"}
+"C-h" = "jump_view_left"
+"C-k" = "jump_view_up"
+"C-j" = "jump_view_down"
+"C-l" = "jump_view_right"
+
+[keys.insert]
+"esc" = [":w", "normal_mode"]

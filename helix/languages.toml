@@ -1,0 +1,16 @@
+[[language]]
+name = "rust"
+language-server = { command = "rust-analyzer" }
+config = """
+{
+  "cargo": {
+    "allFeatures": true,
+    "autoreload": true,
+    "runBuildScripts": true
+  },
+  "checkOnSave": {
+    "command": "clippy",
+    "extraArgs": {"--target-dir", "/home/oskar/Desktop/rust-analyzer/rust-analyzer-check"}
+  }
+}
+"""
