@@ -82,11 +82,12 @@ plugins=(
 	fd
 	ripgrep
 	rust
-	cargo
+    zsh-completions
 )
 
 source $ZSH/oh-my-zsh.sh
 
+autoload -U compinit && compinit
 
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
@@ -108,6 +109,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
    export EDITOR='nvim'
  fi
 export K9S_EDITOR='nvim'
+export VISUAL='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -123,8 +125,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias h='history'
 alias hs='history | rg'
 alias hsi='history | rg -i'
-alias cb='mold -run cargo build'
-alias cr='mold -run cargo run'
+alias cargo='mold -run cargo'
 alias lg='lazygit'
 
 
@@ -132,11 +133,21 @@ alias lg='lazygit'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # FZF configurations
-#export FZF_DEFAULT_OPTS='--layout=reverse --height 40%'
-#export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--layout=reverse --height 40%'
+export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-#export FZF_COMPLETION_TRIGGER='*'
+export FZF_COMPLETION_TRIGGER='*'
+
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
 
