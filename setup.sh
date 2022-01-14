@@ -29,6 +29,8 @@ brew install lazygit
 brew install alacritty
 
 cargo install ripgrep
+cargo install fd-find
+cargo install bat
 
 sudo apt-get install tmux -y
 
