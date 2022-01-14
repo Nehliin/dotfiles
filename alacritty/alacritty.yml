@@ -17,7 +17,8 @@ window:
   dynamic_padding: true
 font:
   normal:
-    family: JetBrains Mono NF
+    # Nerd font!
+    family: JetBrainsMono Nerd Font 
     style: Regular
 
   # Offset is the extra space around each character. `offset.y` can be thought of

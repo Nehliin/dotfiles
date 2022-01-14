@@ -44,11 +44,11 @@ local actions = require('telescope.actions')
 -- find files gives a preview and already ignores .gitingore files thanks to ripgrep
 function search_files()
     local opts = {}
-  --  local ok = pcall(require'telescope.builtin'.git_files, opts)
+    local ok = pcall(require'telescope.builtin'.git_files, opts)
 
-   -- if not ok then
+   if not ok then
        require'telescope.builtin'.find_files(opts)
-   -- end
+   end
 end
 
 function search_in_buffer()

@@ -4,7 +4,7 @@ local read_query = function(filename)
   return table.concat(vim.fn.readfile(vim.fn.expand(filename)), "\n")
 end
 
-require 'nvim-treesitter.install'.compilers = { "clang" }
+require 'nvim-treesitter.install'.compilers = { "gcc","clang" }
 
 require 'nvim-treesitter.configs'.setup {
     highlight = {

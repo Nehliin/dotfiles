@@ -26,6 +26,9 @@ Plug 'nvim-treesitter/playground'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " Lsp stuff
 Plug 'neovim/nvim-lspconfig'
+" Makes code actions pop up work
+Plug 'hood/popui.nvim'
+Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'    
 " Foundational
 Plug 'nvim-telescope/telescope.nvim'
@@ -37,9 +40,6 @@ Plug 'simrat39/rust-tools.nvim'
 Plug 'saecki/crates.nvim'
 " Debugging rust
 Plug 'mfussenegger/nvim-dap'
-" Unknown
-Plug 'nvim-lua/popup.nvim'
-Plug 'RishabhRD/popfix'
 "Completion support
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -54,8 +54,8 @@ call plug#end()
 let g:config_root = stdpath('config')
 
 execute 'source ' . g:config_root . '/general.vim'
-execute 'source ' . g:config_root . '/mappings.lua'
 execute 'luafile ' . g:config_root . '/config.lua'
+execute 'source ' . g:config_root . '/mappings.lua'
 execute 'luafile ' . g:config_root . '/tree-sitter-config.lua'
 
 nnoremap <leader>rl :execute 'source ' . g:config_root . '/init.vim'<CR>
