@@ -125,8 +125,8 @@ alias zshconfig="nvim ~/.zshrc"
 alias h='history'
 alias hs='history | rg'
 alias hsi='history | rg -i'
-alias cargo='mold -run cargo'
 alias lg='lazygit'
+alias cat='bat'
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

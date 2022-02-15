@@ -47,11 +47,28 @@ require'trouble'.setup{}
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
---require'lspinstall'.setup() -- important
+--local lsp_installer = require("nvim-lsp-installer")
 
---local servers = require'lspinstall'.installed_servers()
---for _, server in pairs(servers) do
---  require'lspconfig'[server].setup{}
+--local servers = {
+ --   "clangd",
+--}
+
+-- Loop through the servers listed above.
+--for _, server_name in pairs(servers) do
+--    local server_available, server = lsp_installer_servers.get_server(server_name)
+--    if server_available then
+--        server:on_ready(function ()
+            -- When this particular server is ready (i.e. when installation is finished or the server is already installed),
+            -- this function will be invoked. Make sure not to use the "catch-all" lsp_installer.on_server_ready()
+            -- function to set up servers, to avoid doing setting up a server twice.
+--            local opts = {}
+--            server:setup(opts)
+--        end)
+--        if not server:is_installed() then
+            -- Queue the server to be installed.
+--            server:install()
+--       end
+--    end
 --end
 
 local opts = {
@@ -99,34 +116,6 @@ local bufnr = vim.api.nvim_buf_get_number(0)
 
     vim.lsp.handlers['textDocument/codeAction'] = function(_, _, actions)
         require('lsputil.codeAction').code_action_handler(nil, actions, nil, nil, nil)
-    end
-
-    vim.lsp.handlers['textDocument/references'] = function(_, _, result)
-        require('lsputil.locations').references_handler(nil, result, { bufnr = bufnr }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/definition'] = function(_, method, result)
-        require('lsputil.locations').definition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/declaration'] = function(_, method, result)
-        require('lsputil.locations').declaration_handler(nil, result, { bufnr = bufnr, method = method }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/typeDefinition'] = function(_, method, result)
-        require('lsputil.locations').typeDefinition_handler(nil, result, { bufnr = bufnr, method = method }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/implementation'] = function(_, method, result)
-        require('lsputil.locations').implementation_handler(nil, result, { bufnr = bufnr, method = method }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/documentSymbol'] = function(_, _, result, _, bufn)
-        require('lsputil.symbols').document_handler(nil, result, { bufnr = bufn }, nil)
-    end
-
-    vim.lsp.handlers['textDocument/symbol'] = function(_, _, result, _, bufn)
-        require('lsputil.symbols').workspace_handler(nil, result, { bufnr = bufn }, nil)
     end
 
 vim.opt.completeopt = "menuone,noinsert,noselect"
