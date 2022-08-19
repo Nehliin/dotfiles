@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/opt/android-sdk-linux/platform-tools:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/oskar/.oh-my-zsh"
@@ -134,8 +134,8 @@ alias cat='bat'
 
 # FZF configurations
 export FZF_DEFAULT_OPTS='--layout=reverse --height 40%'
-export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -150,4 +150,10 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
-
+# Homebrew seems to be overriding this :shakesfist:
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/pkgconfig"
+# Go ew
+export PATH=$PATH:/usr/local/go/bin
+# Android support
+export ANDROID_SDK_ROOT=/opt/android-sdk-linux
+export ANDROID_NDK_ROOT=/usr/local/android-ndk-r21d

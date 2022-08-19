@@ -23,7 +23,9 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 Plug 'nvim-treesitter/playground'
 " Dracula
-Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'doums/darcula'
+Plug 'morhetz/gruvbox', { 'as': 'gruvbox' }
+"Plug 'dracula/vim', { 'as': 'dracula' }
 " Lsp stuff
 Plug 'neovim/nvim-lspconfig'
 " Makes code actions pop up work
@@ -39,7 +41,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'saecki/crates.nvim'
 " Debugging rust
-Plug 'mfussenegger/nvim-dap'
+"Plug 'mfussenegger/nvim-dap'
 "Completion support
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -69,6 +71,7 @@ highlight NvimTreeFolderIcon guibg=blue
 " this variable must be enabled for colors to be applied properly
 set termguicolors
 
-colorscheme dracula
+let g:gruvbox_italic=1
+colorscheme gruvbox 
 set guifont="JetBrainsMono NF"
 let g:neovide_transparency=1

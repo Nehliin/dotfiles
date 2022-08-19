@@ -102,6 +102,10 @@ local opts = {
             checkOnSave = true,
             extraArgs = {"--target-dir", "/home/oskar/Desktop/rust-analyzer/rust-analyzer-check"},
           },
+          inlayHints = {
+              lifetimeElisionHints = true,
+              reborrowHints = true,
+          },
         },
       },
     }, -- rust-analyer options
