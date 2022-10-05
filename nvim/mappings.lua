@@ -160,3 +160,6 @@ nnoremap("<Leader>fg", '<Esc> :lua require("telescope.builtin").live_grep()<CR>'
 nnoremap("/", '<Esc> :lua search_in_buffer()<CR>')
 nnoremap("<Leader>fs", '<Esc> :lua search_symbols_workspace()<CR>')
 
+-- Fterm
+nnoremap('<C-t>', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<C-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')

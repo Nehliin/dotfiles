@@ -29,6 +29,14 @@ require('gitsigns').setup {
 
 require'crates'.setup({})
 
+require'FTerm'.setup({
+    border = 'double',
+    dimensions  = {
+        height = 0.9,
+        width = 0.9,
+    },
+})
+
 -- Set up nvim tree 
 require'nvim-tree'.setup {
   -- closes neovim automatically when the tree is the last **WINDOW** in the view

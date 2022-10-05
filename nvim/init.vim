@@ -40,6 +40,11 @@ Plug 'nvim-lua/plenary.nvim'
 " Rust
 Plug 'simrat39/rust-tools.nvim'
 Plug 'saecki/crates.nvim'
+
+
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'numToStr/FTerm.nvim'
+Plug 'tpope/vim-commentary'
 " Debugging rust
 "Plug 'mfussenegger/nvim-dap'
 "Completion support
