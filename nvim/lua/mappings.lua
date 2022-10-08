@@ -39,6 +39,22 @@ function smartquit()
     end
 end
 
+local nnoremap = function(lhs, rhs, silent)
+	vim.api.nvim_set_keymap("n", lhs, rhs, { noremap = true, silent = silent })
+end
+
+local inoremap = function(lhs, rhs)
+	vim.api.nvim_set_keymap("i", lhs, rhs, { noremap = true })
+end
+
+local inosilentexprremap = function(lhs, rhs)
+	vim.api.nvim_set_keymap("i", lhs, rhs, { noremap = true, expr = true, silent = true })
+end
+
+local vnoremap = function(lhs, rhs)
+	vim.api.nvim_set_keymap("v", lhs, rhs, { noremap = true })
+end
+
 local actions = require('telescope.actions')
 -- Open git files if possible, if it errors out open normal find files
 -- find files gives a preview and already ignores .gitingore files thanks to ripgrep
@@ -78,24 +94,9 @@ end
 
 
 
-local nnoremap = function(lhs, rhs, silent)
-	vim.api.nvim_set_keymap("n", lhs, rhs, { noremap = true, silent = silent })
-end
-
-local inoremap = function(lhs, rhs)
-	vim.api.nvim_set_keymap("i", lhs, rhs, { noremap = true })
-end
-
-local inosilentexprremap = function(lhs, rhs)
-	vim.api.nvim_set_keymap("i", lhs, rhs, { noremap = true, expr = true, silent = true })
-end
-
-local vnoremap = function(lhs, rhs)
-	vim.api.nvim_set_keymap("v", lhs, rhs, { noremap = true })
-end
-
 -- smartquit
 nnoremap("<Leader>qq", "<cmd>lua smartquit()<CR>", true)
+
 -- Use alt + hjkl to resize windows
 nnoremap("<M-j>", ":resize -2<CR>")
 nnoremap("<M-k>", ":resize +2<CR>")
@@ -135,31 +136,28 @@ nnoremap("K", "<cmd>lua require('rust-tools.move_item').move_item(true)<CR>", tr
 -- LSP
 nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", true)
 nnoremap("gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", true)
-nnoremap("gr", "<cmd>TroubleToggle lsp_references<CR>", true)
-nnoremap("gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", true)
-nnoremap("<Leader>.", "<cmd>lua require('rust-tools.hover_actions').hover_actions()<CR>", true)
+nnoremap("ge", "<cmd>lua vim.diagnostic.goto_prev()<CR>", true)
+nnoremap("gE", "<cmd>lua vim.diagnostic.goto_next()<CR>", true)
+nnoremap("<silent><leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
+nnoremap("<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", true)
+nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
+vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
+nnoremap("<Leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", true)
 nnoremap("<Leader>rr", "<cmd>lua require('rust-tools.runnables').runnables()<CR>", true)
 vnoremap("<C-space>", "<cmd>RustHoverRange<CR>")
 
-nnoremap("gE", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", true)
-nnoremap("ge", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", true)
-nnoremap("<silent><leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
-nnoremap("<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", true)
-nnoremap("<Leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", true)
-nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
-vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
-
-nnoremap("<Leader>ld", "<cmd>TroubleToggle lsp_definitions<CR>", true)
-nnoremap("<Leader>xx", "<cmd>TroubleToggle<CR>", true)
-nnoremap("<Leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", true)
-nnoremap("<Leader>ae", "<cmd>TroubleToggle workspace_diagnostics<CR>", true)
 
 -- Telescope
 nnoremap("<Leader>ff", '<Esc> :lua search_files()<CR>')
 nnoremap("<Leader>fg", '<Esc> :lua require("telescope.builtin").live_grep()<CR>')
+nnoremap("<Leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", true)
+nnoremap("gi", '<Esc> :lua require("telescope.builtin").lsp_implementations()<CR>', true)
+nnoremap("gr", '<Esc> :lua require("telescope.builtin").lsp_references()<CR>', true)
 nnoremap("/", '<Esc> :lua search_in_buffer()<CR>')
+-- Open previoulsy opened picker
+nnoremap("<Leader>,", '<Esc> :lua require("telescope.builtin").resume()<CR>', true)
 nnoremap("<Leader>fs", '<Esc> :lua search_symbols_workspace()<CR>')
 
--- Fterm
-nnoremap('<C-t>', '<CMD>lua require("FTerm").toggle()<CR>')
+-- Terminal
+vim.keymap.set('n', '<C-t>', '<CMD>lua require("FTerm").toggle()<CR>')
 vim.keymap.set('t', '<C-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
