@@ -52,6 +52,15 @@ require('gitsigns').setup {
       ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
     },
 }
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+P = function(v)
+  print(vim.inspect(v))
+  return v
+end
+
 local rt = require('rust-tools')
 rt.setup {
     tools = { -- rust-tools options
@@ -64,7 +73,15 @@ rt.setup {
             -- default: "=>"
             other_hints_prefix  = "->",
         },
-        snippet_func 
+        snippet_func = function(edits, bufnr, offset_encoding, old_func)
+            P(edits)
+            require("luasnip.extras.lsp").apply_text_edits(
+                edits,
+                bufnr,
+                offset_encoding,
+                old_func
+        )
+        end,
     },
     -- all the opts to send to nvim-lspconfig
     -- these override the defaults set by rust-tools.nvim
@@ -151,6 +168,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
+		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "crates" },
         { name = "nvim_lsp_signature_help" },
