@@ -79,6 +79,10 @@ return require('packer').startup(function(use)
          }
       end,
     })
+    use {
+	    "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
     use "numToStr/FTerm.nvim"
 
     -- Automatically set up your configuration after cloning packer.nvim
