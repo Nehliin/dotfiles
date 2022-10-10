@@ -84,6 +84,7 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
     use "numToStr/FTerm.nvim"
+    use("mg979/vim-visual-multi")
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
