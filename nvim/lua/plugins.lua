@@ -80,6 +80,15 @@ return require('packer').startup(function(use)
       end,
     })
     use {
+        'saecki/crates.nvim',
+        event = { "BufRead Cargo.toml" },
+        requires = { { 'nvim-lua/plenary.nvim' } },
+        config = function()
+            require('crates').setup()
+        end,
+    }
+    use("airblade/vim-rooter")
+    use {
 	    "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
