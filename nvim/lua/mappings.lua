@@ -142,7 +142,7 @@ nnoremap("<silent><leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 nnoremap("<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", true)
 nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
-nnoremap("<Leader>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", true)
+nnoremap("<Leader>e", '<cmd>lua vim.diagnostic.open_float({scope="line"})<CR>', true)
 nnoremap("<Leader>rr", "<cmd>lua require('rust-tools.runnables').runnables()<CR>", true)
 vnoremap("<C-space>", "<cmd>RustHoverRange<CR>")
 
