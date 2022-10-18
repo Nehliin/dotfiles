@@ -127,6 +127,7 @@ alias hs='history | rg'
 alias hsi='history | rg -i'
 alias lg='lazygit'
 alias cat='bat'
+alias ls='exa --icons -l'
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
