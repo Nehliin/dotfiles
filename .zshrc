@@ -152,7 +152,7 @@ _fzf_compgen_dir() {
 }
 
 # Homebrew seems to be overriding this :shakesfist:
-export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/pkgconfig"
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig"
 # Go ew
 export PATH=$PATH:/usr/local/go/bin
 # Android support
