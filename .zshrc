@@ -150,7 +150,8 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
-
+# FIXME
+export CXX=g++
 # Homebrew seems to be overriding this :shakesfist:
 export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig"
 # Go ew
