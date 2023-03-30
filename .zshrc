@@ -159,3 +159,5 @@ export PATH=$PATH:/usr/local/go/bin
 # Android support
 export ANDROID_SDK_ROOT=/opt/android-sdk-linux
 export ANDROID_NDK_ROOT=/usr/local/android-ndk-r21d
+
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
