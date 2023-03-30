@@ -109,9 +109,9 @@ rt.setup {
                   autoreload = true,
                   runBuildScripts = true,
               },
-              checkOnSave = {
+              check = {
                 command = "clippy",
-                checkOnSave = true,
+                enable = true,
                 extraArgs = {"--target-dir", "/home/oskar/Desktop/rust-analyzer/rust-analyzer-check"},
               },
             },
