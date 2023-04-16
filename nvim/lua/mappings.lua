@@ -150,7 +150,7 @@ vnoremap("<C-space>", "<cmd>RustHoverRange<CR>")
 -- Telescope
 nnoremap("<Leader>ff", '<Esc> :lua search_files()<CR>')
 nnoremap("<Leader>fg", '<Esc> :lua require("telescope.builtin").live_grep()<CR>')
-nnoremap("<Leader>fc", "<cmd>lua vim.lsp.buf.formatting()<CR>", true)
+nnoremap("<Leader>fc", "<cmd>lua vim.lsp.buf.format()<CR>", true)
 nnoremap("gi", '<Esc> :lua require("telescope.builtin").lsp_implementations()<CR>', true)
 nnoremap("gr", '<Esc> :lua require("telescope.builtin").lsp_references()<CR>', true)
 nnoremap("/", '<Esc> :lua search_in_buffer()<CR>')
