@@ -72,6 +72,7 @@ ln -s "$(pwd)/dotfiles/tmux.conf" ~/.tmux.conf
 mkdir -p ~/.config
 ln -s "$(pwd)/dotfiles/nvim" ~/.config/nvim  
 ln -s "$(pwd)/dotfiles/alacritty" ~/.config/alacritty
+ln -s "$(pwd)/dotfiles/ghostty" ~/.config/ghostty
 
 # set up rust-analyzer
 cd ~/Desktop
