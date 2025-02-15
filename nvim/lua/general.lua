@@ -12,7 +12,7 @@ vim.opt.ruler = true
 vim.opt.cmdheight = 2
 -- Treat dash separated words as word text objects
 vim.opt.iskeyword:append('-')
--- enable mouse
+    -- enable mouse
 vim.opt.mouse = "a"
 -- horizontal splits are opened below
 vim.opt.splitbelow = true
@@ -51,7 +51,7 @@ vim.opt.autochdir = true
 -- support more colors (t_Co=256?)
 vim.opt.termguicolors = true
 -- set default textwidth
-vim.opt.textwidth = 80
+vim.opt.textwidth = 800
 -- show 10 lines above and below selected
 vim.opt.scrolloff = 10
 vim.opt.completeopt = "menuone,noinsert,noselect"

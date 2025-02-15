@@ -1,6 +1,8 @@
 local nvim_tree_events = require('nvim-tree.events')
 local bufferline_api = require('bufferline.api')
 
+vim.cmd("colorscheme gruvbox")
+
 local function get_tree_size()
   return require'nvim-tree.view'.View.width
 end
@@ -17,14 +19,57 @@ nvim_tree_events.subscribe('TreeClose', function()
   bufferline_api.set_offset(0)
 end)
 
-vim.g.loaded = 1
+vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- Set up nvim tree 
 require'nvim-tree'.setup {
   git = {
       ignore = true,
   },
-  open_on_setup = true,
+}
+
+local dap = require("dap")
+dap.adapters.gdb = {
+  type = "executable",
+  command = "rust-gdb",
+  args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+}
+
+local dap = require("dap")
+dap.configurations.c = {
+  {
+    name = "Launch",
+    type = "gdb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = "${workspaceFolder}",
+    stopAtBeginningOfMainSubprogram = false,
+  },
+  {
+    name = "Select and attach to process",
+    type = "gdb",
+    request = "attach",
+    program = function()
+       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    pid = function()
+       local name = vim.fn.input('Executable name (filter): ')
+       return require("dap.utils").pick_process({ filter = name })
+    end,
+    cwd = '${workspaceFolder}'
+  },
+  {
+    name = 'Attach to gdbserver :1234',
+    type = 'gdb',
+    request = 'attach',
+    target = 'localhost:1234',
+    program = function()
+       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}'
+  },
 }
 
 -- set up git in the gutter
@@ -61,63 +106,34 @@ P = function(v)
   return v
 end
 
-local rt = require('rust-tools')
-rt.setup {
-    tools = { -- rust-tools options
-        inlay_hints = {
-            -- prefix for parameter hints
-            -- default: "<-"
-            parameter_hints_prefix = ":",
 
-            -- prefix for all the other hints (type, chaining)
-            -- default: "=>"
-            other_hints_prefix  = "->",
-        },
-        snippet_func = function(edits, bufnr, offset_encoding, old_func)
-            P(edits)
-            require("luasnip.extras.lsp").apply_text_edits(
-                edits,
-                bufnr,
-                offset_encoding,
-                old_func
-        )
-        end,
-    },
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-        on_attach = function(client, bufnr)
-           vim.keymap.set(
-                "n",
-                "<Leader>.",
-                rt.hover_actions.hover_actions,
-                { buffer = bufnr }
-           )
-    
-           --vim.keymap.set(
-           --    "n",
-           --   "<Leader>a",
-           --    rt.code_action_group.code_action_group,
-           --     { buffer = bufnr }
-           -- )
-            end,
-        settings = {
-            ["rust-analyzer"] = {
-              cargo = {
-                  allFeatures = true,
-                  autoreload = true,
-                  runBuildScripts = true,
-              },
-              check = {
+vim.g.rustaceanvim = {
+  -- Plugin configuration
+  -- tools = {
+  -- },
+  -- LSP configuration
+  server = {
+    --on_attach = function(client, bufnr)
+      -- you can also put keymaps in here
+    --end,
+    default_settings = {
+      -- rust-analyzer language server configuration
+      ['rust-analyzer'] = {
+            cargo = {
+                runBuildScripts = true,
+            },
+            check = {
                 command = "clippy",
                 enable = true,
-                extraArgs = {"--target-dir", "/home/oskar/Desktop/rust-analyzer/rust-analyzer-check"},
-              },
             },
-        },
-    }
+      },
+    },
+  },
+  -- DAP configuration
+  --dap = {
+  --},
 }
+
 
 
 

@@ -37,11 +37,6 @@ return require('packer').startup(function(use)
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     use {
       'ellisonleao/gruvbox.nvim',
-       config = function() require("gruvbox").setup({
-         italic = true,
-       })
-       vim.cmd("colorscheme gruvbox")
-      end
     }
     use({
       "nvim-telescope/telescope.nvim",
@@ -60,8 +55,10 @@ return require('packer').startup(function(use)
       requires = {'RishabhRD/popfix'}
     }
     use {
-      'simrat39/rust-tools.nvim',
-      requires = {'neovim/nvim-lspconfig'}
+      'mrcjkb/rustaceanvim',
+    }
+    use {
+       'mfussenegger/nvim-dap'
     }
     use({"L3MON4D3/LuaSnip", tag = "v1.*"})
     use("hrsh7th/nvim-cmp")

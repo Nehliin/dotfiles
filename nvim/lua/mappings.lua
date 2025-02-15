@@ -93,6 +93,29 @@ function search_symbols_workspace()
 end
 
 
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+  require('dap.ui.widgets').hover()
+end)
+vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+  require('dap.ui.widgets').preview()
+end)
+vim.keymap.set('n', '<Leader>df', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.frames)
+end)
+vim.keymap.set('n', '<Leader>ds', function()
+  local widgets = require('dap.ui.widgets')
+  widgets.centered_float(widgets.scopes)
+end)
 
 -- smartquit
 nnoremap("<Leader>qq", "<cmd>lua smartquit()<CR>", true)
@@ -130,8 +153,8 @@ nnoremap("<Leader>q", ":BufferClose<CR>")
 nnoremap("<Leader>o", ":NvimTreeToggle<CR>")
 
 -- Move stuff
-nnoremap("J", "<cmd>lua require('rust-tools.move_item').move_item(false)<CR>", true)
-nnoremap("K", "<cmd>lua require('rust-tools.move_item').move_item(true)<CR>", true)
+nnoremap("J", "<cmd>lua vim.cmd.RustLsp { 'moveItem', 'down'}", true)
+nnoremap("K", "<cmd>lua vim.cmd.RustLsp { 'moveItem', 'up'}<CR>", true)
 
 -- LSP
 nnoremap("gd", "<cmd>lua vim.lsp.buf.definition()<CR>", true)
@@ -143,8 +166,9 @@ nnoremap("<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", true)
 nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 vnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
 nnoremap("<Leader>e", '<cmd>lua vim.diagnostic.open_float({scope="line"})<CR>', true)
-nnoremap("<Leader>rr", "<cmd>lua require('rust-tools.runnables').runnables()<CR>", true)
-vnoremap("<C-space>", "<cmd>RustHoverRange<CR>")
+nnoremap("<Leader>.", '<cmd>lua vim.lsp.buf.hover()<CR>', true)
+nnoremap("<Leader>rr", "<cmd>lua vim.cmd.RustLsp('runnables')<CR>", true)
+nnoremap("<Leader>rb", "<cmd>lua vim.cmd.RustLsp('debuggables')<CR>", true)
 
 
 -- Telescope
