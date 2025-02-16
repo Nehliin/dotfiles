@@ -54,7 +54,8 @@ vim.opt.textwidth = 800
 vim.opt.scrolloff = 10
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
+vim.opt.laststatus = 3
 
 vim.cmd("colorscheme shadow")
 
-vim.opt.laststatus = 3
+require('lualine').setup {}

@@ -65,3 +65,5 @@ nnoremap("<Leader>rb", "<cmd>lua vim.cmd.RustLsp('debuggables')<CR>", true)
 -- Open previoulsy opened picker
 nnoremap("<Leader>,", '<Esc> :lua require("telescope.builtin").resume()<CR>', true)
 nnoremap("<Leader>fs", '<Esc> :lua search_symbols_workspace()<CR>')
+
+vim.keymap.set('t', '<C-t>', '<C-\\><C-n><CMD>lua require("snacks").terminal()<CR>')

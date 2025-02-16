@@ -36,6 +36,7 @@ return {
 		scroll = { enabled = true },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
+		terminal = { enabled = true },
 		styles = {
 			notification = {
 			-- wo = { wrap = true } -- Wrap notifications
@@ -110,7 +111,8 @@ return {
 			{ "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
 			{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
 			{ "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-			{ "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
+			-- Terminal toggle is also defined in mappings
+			{ "<C-t>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
 			{ "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
 			{ "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
 			{ "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
@@ -210,6 +212,10 @@ return {
 		'mrcjkb/rustaceanvim',
 		version = '^5', -- Recommended
 		lazy = false, -- This plugin is already lazy
-	 }
+	},
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	}
 }
 
