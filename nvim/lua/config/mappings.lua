@@ -61,9 +61,6 @@ nnoremap("<Leader>e", '<cmd>lua vim.diagnostic.open_float({scope="line"})<CR>', 
 nnoremap("<Leader>.", '<cmd>lua vim.lsp.buf.hover()<CR>', true)
 nnoremap("<Leader>rr", "<cmd>lua vim.cmd.RustLsp('runnables')<CR>", true)
 nnoremap("<Leader>rb", "<cmd>lua vim.cmd.RustLsp('debuggables')<CR>", true)
-
--- Open previoulsy opened picker
-nnoremap("<Leader>,", '<Esc> :lua require("telescope.builtin").resume()<CR>', true)
-nnoremap("<Leader>fs", '<Esc> :lua search_symbols_workspace()<CR>')
+nnoremap("<Leader>fc", "<cmd>lua vim.lsp.buf.format()<CR>", true)
 
 vim.keymap.set('t', '<C-t>', '<C-\\><C-n><CMD>lua require("snacks").terminal()<CR>')
