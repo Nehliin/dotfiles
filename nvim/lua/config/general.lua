@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-
 -- enable syntax highliting
 vim.opt.syntax = "enable"
 -- encoding to be displayed
@@ -57,8 +55,6 @@ vim.opt.scrolloff = 10
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
 
---vim.opt.list = true
---vim.opt.listchars:append("space:⋅")
---vim.opt.listchars:append("eol:↴")
+vim.cmd("colorscheme shadow")
 
 vim.opt.laststatus = 3
