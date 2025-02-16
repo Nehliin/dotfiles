@@ -184,10 +184,10 @@ return {
 			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 			-- See the full "keymap" documentation for information on defining your own keymap.
 			keymap = { 
-				preset = 'default',
+				preset = 'enter',
 				['<Tab>'] = { 'select_next', 'fallback' },
 				['<S-Tab>'] = { 'select_prev', 'fallback' },
-				['<CR>'] = { 'select_and_accept', 'fallback' },
+				--['<CR>'] = { 'select_and_accept', 'fallback' },
 			},
 		
 			appearance = {
@@ -232,6 +232,13 @@ return {
 		event="InsertEnter",
 		opts = {} -- Configuration here
 	},
+	{
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	}
 	
 }
 
