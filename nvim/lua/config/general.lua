@@ -1,5 +1,3 @@
--- enable syntax highliting
-vim.opt.syntax = "enable"
 -- encoding to be displayed
 vim.opt.encoding = "utf-8"
 -- encoding written to file
@@ -45,19 +43,15 @@ vim.opt.timeoutlen = 500
 vim.opt.formatoptions:remove("cro")
 -- copy paste between vim and everything else
 vim.opt.clipboard = "unnamedplus"
--- automatically change directory
-vim.opt.autochdir = true
 -- support more colors (t_Co=256?)
 vim.opt.termguicolors = true
--- set default textwidth
-vim.opt.textwidth = 800
 -- show 10 lines above and below selected
 vim.opt.scrolloff = 10
 vim.opt.completeopt = "menuone,noinsert,noselect"
 
 vim.opt.laststatus = 3
 
-vim.cmd("colorscheme shadow")
+vim.cmd("colorscheme tokyonight")
 
 require('lualine').setup {}
 
@@ -130,3 +124,28 @@ require('gitsigns').setup {
   
 require('autosave').setup()
 vim.g.autosave_disable_inside_paths = { vim.fn.stdpath('config') }
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the listed parsers MUST always be installed)
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "rust", "just" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  ---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
+  -- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
+
+  highlight = {
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
