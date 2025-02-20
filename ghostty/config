@@ -1,3 +1,13 @@
 mouse-hide-while-typing = true
 font-size = 12
-window-decoration = false
+window-decoration = none
+
+keybind = ctrl+b>shift+'=new_split:down
+keybind = ctrl+b>shift+5=new_split:right
+
+keybind = ctrl+b>j=goto_split:down
+keybind = ctrl+b>k=goto_split:up
+keybind = ctrl+b>l=goto_split:right
+keybind = ctrl+b>h=goto_split:left
+
+
