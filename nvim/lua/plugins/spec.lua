@@ -46,15 +46,14 @@ return {
 		keys = {
 			-- Top Pickers & Explorer
 			{ "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-			{ "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
-			{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
+			{ "/", function() Snacks.picker.lines() end, desc = "Search buffer lines" },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
 			{ "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
 			{ "<leader>o", function() Snacks.explorer.open() end, desc = "File Explorer" },
 			-- find
 			{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
-			{ "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
+			{ "<leader>fg", function() Snacks.picker.grep() end, desc = "Grep" },
 			{ "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
 			{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
 			-- git
@@ -227,11 +226,16 @@ return {
 	{
 		'lewis6991/gitsigns.nvim',
 	},
-	{
-		"brianhuster/autosave.nvim",
-		event="InsertEnter",
-		opts = {} -- Configuration here
-	},
+    {
+        "okuuva/auto-save.nvim",
+        version = '^1.0.0', -- see https://devhints.io/semver, alternatively use '*' to use the latest tagged release
+        cmd = "ASToggle", -- optional for lazy loading on command
+        event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
+        opts = {
+            -- your config goes here
+            -- or just leave it empty :)
+        },
+    },
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
