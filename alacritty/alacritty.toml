@@ -6,7 +6,10 @@ startup_mode = "Fullscreen"
 shell = { program = "/usr/bin/fish", args = ["-l", "-c", "tmux -u"] }
 
 [env]
- TERM = "xterm-256color"
+TERM = "xterm-256color"
+
+[mouse]
+hide_when_typing = true
 
 [font]
 normal = {family = "JetBrainsMono Nerd Font", style = "Regular" }
