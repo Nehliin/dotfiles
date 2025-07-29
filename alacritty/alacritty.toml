@@ -1,10 +1,9 @@
-[shell]
-program = "/usr/bin/fish"
-args = ["-l", "-c", "tmux"]
-
 [window]
 decorations = "None"
 
+[terminal]
+shell = { program = "/usr/bin/fish", args = ["-l", "-c", "tmux -u"] }
+
 [font]
-normal = {family = "JetBrainsMono Nerd Font", style = "Regular"}
+normal = {family = "JetBrainsMono Nerd Font", style = "Regular" }
 
