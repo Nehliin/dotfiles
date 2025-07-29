@@ -22,7 +22,7 @@ return {
   ---@type snacks.Config
 	opts = {
 		dashboard = { enabled = true },
-		explorer = { enabled = true },
+		explorer = { enabled = false },
 		indent = { enabled = true },
 		input = { enabled = true },
 		notifier = {
@@ -49,7 +49,7 @@ return {
 			{ "/", function() Snacks.picker.lines() end, desc = "Search buffer lines" },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
 			{ "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-			{ "<leader>o", function() Snacks.explorer.open() end, desc = "File Explorer" },
+			{ "<leader>o", function() require('nvim-tree.api').tree.toggle()  end, desc = "File Explorer" },
 			-- find
 			{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 			{ "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
@@ -242,7 +242,15 @@ return {
 		config = true
 		-- use opts = {} for passing setup options
 		-- this is equivalent to setup({}) function
-	}
-	
+	},
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {}
+    }
 }
 
