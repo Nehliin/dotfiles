@@ -45,8 +45,8 @@ nnoremap("J", "<cmd>lua vim.cmd.RustLsp { 'moveItem', 'down'}", true)
 nnoremap("K", "<cmd>lua vim.cmd.RustLsp { 'moveItem', 'up'}<CR>", true)
 
 -- LSP
-nnoremap("ge", "<cmd>lua vim.diagnostic.goto_prev()<CR>", true)
-nnoremap("gE", "<cmd>lua vim.diagnostic.goto_next()<CR>", true)
+nnoremap("gE", "<cmd>lua vim.diagnostic.goto_prev()<CR>", true)
+nnoremap("ge", "<cmd>lua vim.diagnostic.goto_next()<CR>", true)
 nnoremap("<silent><leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
 nnoremap("<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", true)
 nnoremap("<Leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", true)
