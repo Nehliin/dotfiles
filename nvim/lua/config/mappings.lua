@@ -23,12 +23,6 @@ nnoremap("<M-l>", ":vertical resize +2<CR>")
 -- Escape redraws the screen and removes any search highlighting.
 nnoremap("<esc>", ":noh<return><esc>")
 
--- Better window navigation
-nnoremap("<C-h>", "<C-w>h")
-nnoremap("<C-j>", "<C-w>j")
-nnoremap("<C-k>", "<C-w>k")
-nnoremap("<C-l>", "<C-w>l")
-
 -- Window splitting
 nnoremap("<Leader>sv", ":vsplit<CR>")
 nnoremap("<Leader>sc", ":split<CR>")
