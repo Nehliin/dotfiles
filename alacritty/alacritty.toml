@@ -1,13 +1,13 @@
 [window]
 decorations = "None"
-startup_mode = "Fullscreen"
+startup_mode = "Maximized"
 
 [terminal]
 shell = { program = "/usr/bin/fish", args = ["-l", "-c", "tmux -u"] }
 
 # Let Alacritty use its default TERM value
 # [env]
-# TERM = "xterm-256color"
+# TERM = "xterm-256color
 
 [mouse]
 hide_when_typing = true
