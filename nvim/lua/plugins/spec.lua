@@ -209,7 +209,7 @@ return {
 	},
 	{
 		'mrcjkb/rustaceanvim',
-		version = '^5', -- Recommended
+		version = '*', -- Recommended
 		lazy = false, -- This plugin is already lazy
 	},
 	{
