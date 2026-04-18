@@ -26,12 +26,20 @@ exec mako
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /usr/share/backgrounds/default.jxl fill
+output * bg /usr/share/wallpapers/cachyos-wallpapers/BlueFeathers.png fill
 #
 # Example configuration:
 #
 output DP-3 resolution 2560x1440@164.999Hz position 0,0
 output DP-2 resolution 2560x1440@64.000Hz position 2560,0
+
+ # NVIDIA + gaming fixes
+output DP-3 adaptive_sync on
+output DP-3 allow_tearing yes
+output DP-3 max_render_time off
+
+
+for_window [app_id="gamescope"] fullscreen enable
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
