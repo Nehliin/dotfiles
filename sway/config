@@ -20,6 +20,8 @@ set $rofi_cmd rofi \
         -terminal '$term'
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
+exec mako
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
