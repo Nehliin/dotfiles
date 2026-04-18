@@ -43,15 +43,6 @@ for_window [app_id="gamescope"] fullscreen enable
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-### Idle configuration
-#
-# Example configuration:
-#
-# swayidle is configured via /usr/share/sway/config.d/90-swayidle.conf
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
 #
@@ -223,5 +214,19 @@ bindsym --locked XF86AudioPrev exec playerctl previous
 
 # Screenshot: select area with grim + slurp
 bindsym Print exec grim -g "$(slurp)"
+
+# Lock screen
+bindsym $mod+Shift+x exec swaylock -f -c 000000
+
+# Inhibit idle (skip lock/suspend) while any window is fullscreen
+for_window [shell=".*"] inhibit_idle fullscreen
+
+# Idle: lock at 5m, screen off at 10m, suspend at 30m; lock before sleep
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * power off"' \
+         resume 'swaymsg "output * power on"' \
+    timeout 1800 'systemctl suspend' \
+    before-sleep 'swaylock -f -c 000000'
 
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
