@@ -81,6 +81,7 @@ vim.pack.add({
     "https://github.com/mrcjkb/rustaceanvim",
     "https://github.com/nvim-lualine/lualine.nvim",
     "https://github.com/folke/snacks.nvim",
+    "https://github.com/esmuellert/codediff.nvim",
 })
 
 vim.cmd("colorscheme tokyonight")
